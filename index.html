@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111820">
+    <title>ストーリーテキスト検索</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="search.js" defer></script>
+  </head>
+  <body>
+    <main class="app">
+      <header class="page-header">
+        <h1>アークナイツストーリーテキスト検索</h1>
+      </header>
+
+
+      <section class="panel" aria-labelledby="search-heading">
+        <div class="section-heading">
+          <div>
+            <h2 id="search-heading">検索条件</h2>
+            <p>両方の場合はAND検索になります。大文字・小文字を区別します。
+            </p>
+          </div>
+        </div>
+        <form id="search-form">
+          <div class="search-fields">
+            <label>
+              <span>人物名</span>
+              <input id="speaker-query" type="search" autocomplete="off">
+            </label>
+            <label>
+              <span>文章</span>
+              <input id="text-query" type="search" autocomplete="off">
+            </label>
+          </div>
+          <div class="form-actions">
+            <button class="button button-primary" id="search-button" type="submit">検索</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel results-panel" aria-labelledby="results-heading">
+        <div class="results-heading">
+          <div class="section-heading">
+            <div>
+              <h2 id="results-heading">検索結果</h2>
+              <p id="result-count"></p>
+            </div>
+          </div>
+        </div>
+        <p class="status" id="status" role="status" aria-live="polite">
+
+        </p>
+        <details class="file-errors" id="file-errors" hidden>
+          <summary>読み込めなかったファイル</summary>
+          <ul id="file-error-list"></ul>
+        </details>
+        <label class="sr-only" for="results">検索結果</label>
+        <textarea id="results" class="results" readonly spellcheck="false" wrap="off"></textarea>
+        <button class="button button-secondary button-small" id="download-button" type="button" disabled>
+          結果を保存
+        </button>
+      </section>
+
+      
+      <section class="panel" aria-labelledby="files-heading" hidden>
+        <div class="section-heading">
+          <div>
+            <h2 id="files-heading">検索データ</h2>
+          </div>
+        </div>
+        <p class="file-status" id="file-status" aria-live="polite">ローカル検索データを確認しています...</p>
+        <div class="file-actions" id="file-actions" hidden>
+          <button class="button button-secondary" id="choose-folder" type="button">
+            フォルダーを選択
+          </button>
+          <button class="button button-secondary" id="choose-files" type="button">
+            TXTファイルを選択
+          </button>
+        </div>
+        <input id="folder-input" type="file" webkitdirectory directory multiple hidden>
+        <input id="files-input" type="file" accept=".txt,text/plain" multiple hidden>
+        <p class="compatibility-note" id="folder-note" hidden>
+          フォルダー選択に対応していないブラウザーです。TXTファイルを個別に選択してください。
+        </p>
+      </section>
+
+      <footer>
+        <span></span>
+        <span>最新イベント：「人々、我々」 2026年11月11日更新</span>
+      </footer>
+    </main>
+  </body>
+</html>
